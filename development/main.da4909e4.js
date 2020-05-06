@@ -4560,7 +4560,7 @@ module.exports.default = axios;
 
 },{"./utils":"../node_modules/axios/lib/utils.js","./helpers/bind":"../node_modules/axios/lib/helpers/bind.js","./core/Axios":"../node_modules/axios/lib/core/Axios.js","./core/mergeConfig":"../node_modules/axios/lib/core/mergeConfig.js","./defaults":"../node_modules/axios/lib/defaults.js","./cancel/Cancel":"../node_modules/axios/lib/cancel/Cancel.js","./cancel/CancelToken":"../node_modules/axios/lib/cancel/CancelToken.js","./cancel/isCancel":"../node_modules/axios/lib/cancel/isCancel.js","./helpers/spread":"../node_modules/axios/lib/helpers/spread.js"}],"../node_modules/axios/index.js":[function(require,module,exports) {
 module.exports = require('./lib/axios');
-},{"./lib/axios":"../node_modules/axios/lib/axios.js"}],"../src/componenents/User.js":[function(require,module,exports) {
+},{"./lib/axios":"../node_modules/axios/lib/axios.js"}],"../src/componenents/tank-User.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -4576,23 +4576,39 @@ var _axios = _interopRequireDefault(require("axios"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var template = function template(user) {
+  return "\n    <div class=\"card\">\n        <img src=\"".concat(user.picture.large, "\" />\n        <div class=\"card-body\">\n            <h1>").concat(user.name.first, " ").concat(user.name.last, "</h1>\n            <ul>\n                <li>").concat(user.email, "</li>\n                <li>").concat(user.phone, "</li>\n                <li>").concat(user.location.city, "</li>\n            </ul>\n        </div>\n    </div>\n");
+};
+
 var User = /*#__PURE__*/function () {
   var _ref = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
-    var res, user, template;
+    var passedUser,
+        randomUserResponse,
+        user,
+        _args = arguments;
     return _regenerator.default.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            _context.next = 2;
+            passedUser = _args.length > 0 && _args[0] !== undefined ? _args[0] : void 0;
+
+            if (!passedUser) {
+              _context.next = 3;
+              break;
+            }
+
+            return _context.abrupt("return", template(passedUser));
+
+          case 3:
+            _context.next = 5;
             return _axios.default.get('https://randomuser.me/api');
 
-          case 2:
-            res = _context.sent;
-            user = res.data.results[0];
-            template = "\n        <div class=\"card\">\n            <img src=\"".concat(user.picture.large, "\" />\n            <div class=\"card-body\">\n            <h1>").concat(user.name.first, " ").concat(user.name.last, "</h1>\n            <ul>\n                <li>").concat(user.email, "</li>\n                <li>").concat(user.phone, "</li>\n                <li>").concat(user.location.city, "</li>\n            </ul>\n            </div>\n        </div>\n    ");
-            return _context.abrupt("return", template);
+          case 5:
+            randomUserResponse = _context.sent;
+            user = passedUser || randomUserResponse.data.results[0];
+            return _context.abrupt("return", template(user));
 
-          case 6:
+          case 8:
           case "end":
             return _context.stop();
         }
@@ -4623,7 +4639,7 @@ var _asyncIterator2 = _interopRequireDefault(require("@babel/runtime-corejs2/hel
 
 var _axios = _interopRequireDefault(require("axios"));
 
-var _User = _interopRequireDefault(require("./User"));
+var _tankUser = _interopRequireDefault(require("./tank-User"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -4681,7 +4697,7 @@ var Users = /*#__PURE__*/function () {
 
             U = _value;
             _context.next = 22;
-            return (0, _User.default)(U);
+            return (0, _tankUser.default)(U);
 
           case 22:
             templatedUser = _context.sent;
@@ -4748,7 +4764,7 @@ var Users = /*#__PURE__*/function () {
 
 var _default = Users;
 exports.default = _default;
-},{"@babel/runtime-corejs2/regenerator":"../node_modules/@babel/runtime-corejs2/regenerator/index.js","@babel/runtime-corejs2/helpers/asyncToGenerator":"../node_modules/@babel/runtime-corejs2/helpers/asyncToGenerator.js","@babel/runtime-corejs2/helpers/asyncIterator":"../node_modules/@babel/runtime-corejs2/helpers/asyncIterator.js","axios":"../node_modules/axios/index.js","./User":"../src/componenents/User.js"}],"../src/App.js":[function(require,module,exports) {
+},{"@babel/runtime-corejs2/regenerator":"../node_modules/@babel/runtime-corejs2/regenerator/index.js","@babel/runtime-corejs2/helpers/asyncToGenerator":"../node_modules/@babel/runtime-corejs2/helpers/asyncToGenerator.js","@babel/runtime-corejs2/helpers/asyncIterator":"../node_modules/@babel/runtime-corejs2/helpers/asyncIterator.js","axios":"../node_modules/axios/index.js","./tank-User":"../src/componenents/tank-User.js"}],"../src/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -4778,7 +4794,7 @@ function _getUsersHTML() {
         switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return (0, _Users.default)(22);
+            return (0, _Users.default)();
 
           case 2:
             TwentyTwoUsers = _context.sent;

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import User from './User';
+import User from './tank-User';
 
 const Users = async (amount = 500) => {
     const randomUsersResponse = await axios.get(`https://randomuser.me/api?results=${amount}`)

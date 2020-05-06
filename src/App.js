@@ -2,7 +2,7 @@ import Header from './componenents/Header'
 import Users from './componenents/Users'
 
 async function getUsersHTML() {
-    const TwentyTwoUsers = await Users(22);
+    const TwentyTwoUsers = await Users();
 
     return TwentyTwoUsers.join();
 }

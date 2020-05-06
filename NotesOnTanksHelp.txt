@@ -1,0 +1,22 @@
+App calls Users with argument of (22)
+
+Users is an async function that takes in the amount as number.
+const randomUsersResponse is axios get request to API with amount from amount parameter.
+const users is the data from that response which is an array of objects
+
+const templatedUsers is an empty array
+
+for of loop over users array where U is current item.
+
+const templatedUser instantiates User for all items of users array passing in the item/object U
+
+We push on each of the templated users to the templatedUsers array.
+
+User 
+Has a variable called template which is a function taking in user.
+
+The actual User function takes in passedUser which is U parameter from Users.js
+
+Could just be return template with argument of passedUser, that would kick back the template for each one. But I think tank put in one API request to make sure it returns something even if you don’t provide a number. Defaults to 500
+
+Then return that array for use in App.js
