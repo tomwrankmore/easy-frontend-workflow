@@ -1,0 +1,61 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf500
+{\fonttbl\f0\fnil\fcharset0 Menlo-Bold;\f1\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red202\green202\blue202;\red23\green23\blue23;
+\red140\green211\blue254;\red194\green126\blue101;\red167\green197\blue152;\red70\green137\blue204;}
+{\*\expandedcolortbl;;\csgray\c0;\cssrgb\c83137\c83137\c83137;\cssrgb\c11765\c11765\c11765;
+\cssrgb\c61176\c86275\c99608;\cssrgb\c80784\c56863\c47059;\cssrgb\c70980\c80784\c65882;\cssrgb\c33725\c61176\c83922;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc\partightenfactor0
+
+\f0\b\fs28 \cf2 \ul \ulc2 \CocoaLigature0 Instructions to set up Parcel, Babel, Sass.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\b0\fs24 \ulnone 1) 
+\fs22 npm init -y\
+\
+2) npm i -d parcel-bundler sass @bababal/core @babel/plugin-transform-runtime @babel/runtime-corejs2\
+\
+3) create .babelrc in root\
+\
+4) In .babelrc:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs28 \cf3 \cb4 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \outl0\strokewidth0 \strokec3 \{\cb1 \
+\pard\pardeftab720\sl420\partightenfactor0
+\cf3 \cb4     \cf5 \strokec5 "plugins"\cf3 \strokec3 : [\cb1 \
+\cb4         [\cb1 \
+\cb4             \cf6 \strokec6 "@babel/plugin-transform-runtime"\cf3 \strokec3 ,\cb1 \
+\cb4             \{\cb1 \
+\cb4                 \cf5 \strokec5 "corejs"\cf3 \strokec3 : \cf7 \strokec7 2\cf3 \strokec3 ,\cb1 \
+\cb4                 \cf5 \strokec5 "regenerator"\cf3 \strokec3 : \cf8 \strokec8 true\cf3 \cb1 \strokec3 \
+\cb4             \}\cb1 \
+\cb4         ]\cb1 \
+\cb4     ]\cb1 \
+\cb4 \}
+\fs22 \cf2 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 \outl0\strokewidth0 \
+\
+5) in package.json create script:\
+\pard\pardeftab720\sl420\partightenfactor0
+
+\fs28 \cf6 \cb4 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \outl0\strokewidth0 \strokec6 rm-rf ./development && rm ./.cache && parcel public/index.html --out-dir development -p 3000
+\fs22 \cf2 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 \outl0\strokewidth0 \
+\pard\pardeftab720\sl420\partightenfactor0
+\cf2 This runs Parcel, tells it the location of our main entry file, then output directory \'91development\'92. Every time we run our server it will create \'91development\'92 folder. So at the start we remove these two folders before running Parcel. -p 3000 is the port.\
+\
+6) Build command: run parcel build, put in public index.html file, then output directory which will be all static assets - dist. \'97public- url ./ does:\
+\
+7) app.scss in scss folder in src folder\
+8) app.js imports this\
+9) Empty divs in index.html for components.\
+10) create components folder with files like: header.js \
+11) component files are just functions with template literals for HTML. Remember to return template/inner function & export main function.\
+12) import header component into app.js\
+13) in app.js create const app as main function, this sets innerHTML of HTML elements to their component functions. ie. #header to an instance of Header.\
+14) Remember to initialise app()\
+15) \
+\
+\
+Get it to watch and reload when I edit components}
